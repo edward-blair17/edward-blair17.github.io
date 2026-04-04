@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Design & Engineering | Edward Blair</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; padding: 2rem; background: #f6f8fa; color: #24292e; }
+        .nav { margin-bottom: 2rem; }
+        .nav a { text-decoration: none; color: #0366d6; font-weight: bold; }
+        .content { max-width: 900px; margin: auto; background: #fff; padding: 2.5rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        h1 { color: #24292e; border-bottom: 2px solid #eaecef; padding-bottom: 10px; }
+        h2 { color: #0366d6; margin-top: 2rem; }
+        .highlight-box { background-color: #f1f8ff; border-left: 4px solid #0366d6; padding: 15px; margin: 20px 0; border-radius: 0 4px 4px 0; }
+        
+        /* Code Block Styling */
+        pre { background: #272822; color: #f8f8f2; padding: 1.5rem; border-radius: 8px; overflow-x: auto; font-size: 0.9rem; line-height: 1.4; }
+        code { font-family: 'Consolas', 'Monaco', 'Courier New', monospace; }
+        
+        .github-link { background: #24292e; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block; margin-top: 20px; font-weight: bold; }
+        .github-link:hover { background: #444; }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="nav"><a href="index.html">← Back to Portfolio Home</a></div>
+        
+        <h1>Artifact 2: Software Design & Engineering</h1>
+        
+        <div class="highlight-box">
+            <strong>Project:</strong> Raspberry Pi Thermostat System (Refactored)<br>
+            <strong>Computational Focus:</strong> Modular Architecture & Non-blocking Logic
+        </div>
+
+        <h2>Project Description</h2>
+        <p>This artifact is an embedded climate control system designed to monitor ambient temperatures and manage heating/cooling states via a State Machine. Originally a single procedural script, I enhanced this system into a modular, object-oriented application capable of real-time responsiveness.</p>
+
+        <h2>Professional Narrative</h2>
+        <p>My enhancement focused on the transition from simple scripting to software engineering. I addressed the "tight coupling" of the original design by encapsulating hardware interactions into specialized classes. Below is a snippet of the <code>HardwareToolbox</code>, which abstracts the sensors and LEDs from the main logic:</p>
+
+<pre><code>class HardwareToolbox:
+    """Manages all physical sensors and indicators."""
+    def __init__(self):
+        self.i2c = board.I2C()
+        try:
+            self.thSensor = adafruit_ahtx0.AHTx0(self.i2c)
+        except Exception as e:
+            self.thSensor = None # Defensive Programming
+
+    def read_temperature_f(self):
+        """Defensive wrapper with failure fallbacks."""
+        try:
+            if self.thSensor:
+                t_celsius = self.thSensor.temperature
+                return ((9 / 5) * t_celsius) + 32
+            return self.last_known_temp
+        except Exception:
+            return self.last_known_temp</code></pre>
+
+        <p>By implementing <strong>Non-blocking timing</strong>, I allowed the system to perform high-frequency tasks (checking buttons) and low-frequency tasks (updating a remote serial server every 30 seconds) simultaneously. This was achieved using delta-time comparisons rather than thread-freezing <code>sleep()</code> commands.</p>
+
+        <h2>Self-Reflection</h2>
+        <p>This project successfully met <strong>Course Outcome 4</strong> by demonstrating professional techniques to deliver real-world value. The introduction of <strong>Hysteresis</strong>—a calibrated offset to prevent LED flickering at the setpoint—showcases an understanding of how software logic must account for physical hardware limitations. This journey taught me that professional code isn't just about functionality; it's about building modular, maintainable, and resilient systems.</p>
+
+        <a href="https://github.com/edward-blair17/edward-blair17.github.io/tree/main/Software%20Design%20and%20Engineering" class="github-link">
+            View Full Source Code on GitHub
+        </a>
+    </div>
+</body>
+</html>
