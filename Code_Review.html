@@ -3,28 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artifact Details | Edward Blair</title>
+    <title>Code Review Artifact | Edward Blair</title>
     <style>
-        body { font-family: sans-serif; line-height: 1.6; margin: 0; padding: 2rem; background: #fff; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; padding: 2rem; background: #f6f8fa; color: #24292e; }
         .nav { margin-bottom: 2rem; }
-        .content { max-width: 800px; margin: auto; }
-        .github-link { background: #24292e; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 20px; }
+        .nav a { text-decoration: none; color: #0366d6; font-weight: bold; }
+        .content { max-width: 800px; margin: auto; background: #fff; padding: 2.5rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        h1 { color: #24292e; border-bottom: 2px solid #eaecef; padding-bottom: 10px; }
+        h2 { color: #0366d6; margin-top: 2rem; }
+        
+        /* Video Container for responsive sizing */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            margin: 20px 0;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .github-link { 
+            background: #24292e; 
+            color: white; 
+            padding: 12px 24px; 
+            text-decoration: none; 
+            border-radius: 6px; 
+            display: inline-block; 
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .github-link:hover { background: #444; }
     </style>
 </head>
 <body>
     <div class="content">
-        <div class="nav"><a href="index.html">← Back to Home</a></div>
+        <div class="nav"><a href="index.html">← Back to Portfolio Home</a></div>
         
-        <h1>Code-Review</h1>
+        <h1>Artifact 1: Code Review</h1>
         
-        <h2>Self-Reflection & Review</h2>
+        <h2>Video Walkthrough</h2>
+        <p>In this video, I perform a detailed code review of my initial project, identifying areas for improvement in software design, algorithm efficiency, and security.</p>
+        
+        <div class="video-container">
+            <iframe 
+                src="https://www.youtube.com/embed/0DUF-QDPkBY" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <h2>Self-Reflection & Narrative</h2>
         <p>
-            [Type your review and narrative here. Explain what you did, 
-            what challenges you faced, and how you improved the code.]
+            [Type your review and narrative here. Describe the specific enhancements you 
+            planned during this review and how they align with the CS499 outcomes.]
         </p>
 
         <a href="https://github.com/edward-blair17/edward-blair17.github.io/tree/main/Software%20Design%20and%20Engineering" class="github-link">
-            View Code on GitHub
+            View Project Files on GitHub
         </a>
     </div>
 </body>
