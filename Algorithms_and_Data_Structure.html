@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithms & Data Structures | Edward Blair</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; padding: 2rem; background: #f6f8fa; color: #24292e; }
+        .nav { margin-bottom: 2rem; }
+        .nav a { text-decoration: none; color: #0366d6; font-weight: bold; }
+        .content { max-width: 900px; margin: auto; background: #fff; padding: 2.5rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        h1 { color: #24292e; border-bottom: 2px solid #eaecef; padding-bottom: 10px; }
+        h2 { color: #0366d6; margin-top: 2rem; }
+        .highlight-box { background-color: #f1f8ff; border-left: 4px solid #0366d6; padding: 15px; margin: 20px 0; border-radius: 0 4px 4px 0; }
+        
+        /* Code Block Styling */
+        pre { background: #272822; color: #f8f8f2; padding: 1.5rem; border-radius: 8px; overflow-x: auto; font-size: 0.9rem; line-height: 1.4; }
+        code { font-family: 'Consolas', 'Monaco', 'Courier New', monospace; }
+        
+        .github-link { background: #24292e; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block; margin-top: 20px; font-weight: bold; }
+        .github-link:hover { background: #444; }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="nav"><a href="index.html">← Back to Portfolio Home</a></div>
+        
+        <h1>Artifact 3: Algorithms & Data Structures</h1>
+        
+        <div class="highlight-box">
+            <strong>Project:</strong> Data-Aware Thermostat System<br>
+            <strong>Computational Focus:</strong> Sensor Smoothing & Preference Tracking
+        </div>
+
+        <h2>Project Description</h2>
+        <p>This artifact is an evolution of a state-machine-driven thermostat originally developed for a Raspberry Pi environment[cite: 3, 4]. While the original version relied on reactive "if-then" logic, this enhanced version utilizes sophisticated data structures to ensure data integrity and system stability[cite: 7, 9].</p>
+
+        <h2>Professional Narrative</h2>
+        <p>In this enhancement, I addressed the challenge of "sensor noise"—tiny, random fluctuations in hardware data that cause system jitter[cite: 12, 14]. I replaced raw sensor polling with a sliding window buffer utilizing the <code>deque</code> data structure from the Python collections library[cite: 11]. This moving average filter ensures the thermostat reacts to genuine environmental changes rather than hardware glitches[cite: 12].</p>
+
+<pre><code># ALGORITHM: SENSOR SMOOTHING (Moving Average)
+def get_stabilized_temp(self):
+    raw_temp = self.getFahrenheit()
+    # Add new reading to the sliding window buffer (max 10 items)
+    self.temp_history.append(raw_temp)
+    
+    # Calculate the average of the data structure for stabilization
+    avg_temp = sum(self.temp_history) / len(self.temp_history)
+    return avg_temp</code></pre>
+
+        <p>I further optimized the system by implementing a <strong>Preference Logger</strong>[cite: 15]. This algorithm tracks user behavior over time to establish "Historical Comfort Boundaries," setting the groundwork for predictive climate control by logging the highest and lowest setpoints requested by the user[cite: 10, 16].</p>
+
+        <h2>Self-Reflection</h2>
+        <p>By completing these enhancements, I successfully met <strong>Program Outcome 3</strong> by designing a solution that manages the trade-offs between memory usage and system responsiveness[cite: 13, 20]. This experience taught me that effective algorithms are those that leverage specific data structures to solve real-world hardware constraints, moving beyond basic functionality toward professional-grade engineering[cite: 17, 20].</p>
+
+        <a href="https://github.com/edward-blair17/edward-blair17.github.io/tree/main/Algorithms%20and%20Data%20Structures" class="github-link">
+            View Algorithm Source Code on GitHub
+        </a>
+    </div>
+</body>
+</html>
