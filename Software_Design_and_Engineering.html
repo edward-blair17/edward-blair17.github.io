@@ -48,7 +48,7 @@
         
         <h3>1. Centralized Configuration</h3>
         <p>I implemented a ‘CONFIG’ dictionary to manage all hardware pin assignments and thresholds in a single location. This follows industry best practices for maintainability.</p>
-        <p><em>Code Comparison (After):</em></p>
+        
 <pre><code># Centralized Hardware Mapping
 CONFIG = {
     'PINS': {
@@ -66,7 +66,7 @@ CONFIG = {
 
         <h3>2. Decoupled Hardware Logic</h3>
         <p>I created the ‘HardwareToolbox’ class to act as an abstraction layer between the physical sensors and the thermostat's brain. This ensures that the main controller doesn't need to know how the sensor works, only what the temperature is.</p>
-        <p><em>Code Highlight (Defensive Sensor Reading):</em></p>
+
 <pre><code>def read_temperature_f(self):
     """Defensive wrapper for sensor reading."""
     try:
