@@ -1,1 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Databases | Edward Blair</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; padding: 2rem; background: #f6f8fa; color: #24292e; }
+        .nav { margin-bottom: 2rem; }
+        .nav a { text-decoration: none; color: #0366d6; font-weight: bold; }
+        .content { max-width: 900px; margin: auto; background: #fff; padding: 2.5rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        h1 { color: #24292e; border-bottom: 2px solid #eaecef; padding-bottom: 10px; }
+        h2 { color: #0366d6; margin-top: 2rem; }
+        .highlight-box { background-color: #f1f8ff; border-left: 4px solid #0366d6; padding: 15px; margin: 20px 0; border-radius: 0 4px 4px 0; }
+        
+        /* Code Block Styling */
+        pre { background: #272822; color: #f8f8f2; padding: 1.5rem; border-radius: 8px; overflow-x: auto; font-size: 0.9rem; line-height: 1.4; }
+        code { font-family: 'Consolas', 'Monaco', 'Courier New', monospace; }
+        
+        .github-link { background: #24292e; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block; margin-top: 20px; font-weight: bold; }
+        .github-link:hover { background: #444; }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="nav"><a href="index.html">← Back to Portfolio Home</a></div>
+        
+        <h1>Artifact 3: Databases</h1>
+        
+        <div class="highlight-box">
+            <strong>Project:</strong> Animal Shelter Dashboard (Grazioso Salvare)<br>
+            <strong>Computational Focus:</strong> Full-Stack Migration and RESTful API Integration
+        </div>
 
+        <h2>Artifact Description</h2>
+        <p>The artifact I selected to enhance is the Animal Shelter Dashboard and CRUD Module. Originally developed in Python using the Dash framework, this project utilized a custom Python module to perform CRUD operations on a MongoDB database. For my enhancement, I ported the entire back-end architecture from Python to Node.js using the Express.js framework. This involved rewriting the CRUD logic to use the MongoDB Node.js driver and creating a RESTful API to manage communication between the dashboard and the database.</p>
+
+        <h2>Justification for Inclusion</h2>
+        <p>This project demonstrates my proficiency in database management and cross-language architecture. Key areas of growth showcased in this artifact include:</p>
+        <ul>
+            <li><strong>Cross-Language Proficiency:</strong> Demonstrated the ability to translate algorithmic principles from a Python/Dash environment into a modern Node.js/Express runtime.</li>
+            <li><strong>API Development:</strong> Created a secure gatekeeper (REST API) that validates requests before they reach the database, rather than allowing the front-end to connect directly to MongoDB.</li>
+            <li><strong>Scalability:</strong> Leveraged Node.js's non-blocking I/O loop to handle concurrent data requests more efficiently than the original synchronous Python script.</li>
+        </ul>
+
+        <h2>The Enhancement: Architecture and Security</h2>
+        <p>The primary focus of this enhancement was moving to a multi-tier architecture that follows industry-standard design patterns for security and performance.</p>
+        
+        <h3>1. Secure Configuration Logic</h3>
+        <p>I transitioned from hard-coded connection strings to a modular security model using a 'secure_config.json' file. This acts as a protected repository for database credentials, ensuring they are not exposed within the application logic.</p>
+        
+<pre><code>// secure_config.json
+{
+  "database": {
+    "username": "aacuser",
+    "password": "SNHU1234",
+    "host": "localhost",
+    "port": 27017,
+    "dbName": "aac",
+    "collectionName": "animals"
+  }
+}</code></pre>
+
+        <h3>2. Backend API Logic (Node.js/Express)</h3>
+        <p>The following pseudocode illustrates the structure of the new Express server, which handles database connections and serves animal data through secure API endpoints.</p>
+
+<pre><code># Node.js Express Server Logic
+IMPORT Express, MongoDB Driver
+ 
+FUNCTION loadConfig():
+    READ "secure_config.json"
+    RETURN parsed JSON object
+ 
+ASYNC FUNCTION connectToDatabase():
+    config = loadConfig()
+    TRY:
+        URI = "mongodb://user:pass@host:port"
+        client = WAIT FOR MongoClient.connect(URI)
+        RETURN client.db("aac").collection("animals")
+    CATCH Error:
+        PRINT "Database Status: OFFLINE"
+ 
+app.GET("/api/animals", ASYNC (request, response):
+    collection = WAIT FOR connectToDatabase()
+    IF collection:
+        results = WAIT FOR collection.find(query).toArray()
+        SEND results as JSON</code></pre>
+
+        <h2>Growth & Technical Process</h2>
+        <p>This process taught me the importance of environment-specific debugging. While porting the logic was straightforward, I encountered a significant hurdle with "Authentication Failed" errors once I attempted to lock down the database for production. This required a deep dive into the Windows filesystem to locate the MongoDB engine files and manually adjust security settings to enable password authentication. This experience strengthened my ability to troubleshoot complex, multi-layered systems where the solution lies at the intersection of code and system configuration.</p>
+
+        <h2>Meeting Professional Standards</h2>
+        <p>This enhancement aligns with Course Outcome 4 (Innovative Techniques) by implementing a high-performance, non-blocking architecture. It also fulfills Course Outcome 5 (Security Mindset) through the implementation of a multi-tier authentication strategy. By separating credentials from the application logic and gatekeeping the data behind a REST API, I have delivered a solution that meets the rigorous reliability and security standards expected in professional software engineering.</p>
+
+        <a href="Database.zip" class="github-link">
+            Download Full Database Artifact (.zip)
+        </a>
+    </div>
+</body>
+</html>
