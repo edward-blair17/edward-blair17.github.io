@@ -25,21 +25,48 @@
     <div class="content">
         <div class="nav"><a href="index.html">← Back to Portfolio Home</a></div>
         
-        <h1>Artifact 1: Software Design & Engineering</h1>
+        <h1>Artifact 2: Software Design & Engineering</h1>
         
         <div class="highlight-box">
-            <strong>Project:</strong> Raspberry Pi Thermostat Prototype [cite: 3]<br>
-            <strong>Computational Focus:</strong> Modularization, Object-Oriented Refactoring, and Non-blocking Logic [cite: 12, 27]
+            <strong>Project:</strong> Raspberry Pi Thermostat Prototype<br>
+            <strong>Computational Focus:</strong> Modularization and Architectural Refactoring
         </div>
 
-        <h2>Project Description</h2>
-        <p>This artifact is a climate control system originally developed in CS-350 that integrates a Raspberry Pi with a temperature sensor, LCD screen, and LED indicators[cite: 3, 4]. The software manages Off, Heat, and Cool states while transmitting real-time status updates to a remote server via serial communication[cite: 5]. I selected this project because it serves as a critical bridge between physical hardware and complex software logic[cite: 7].</p>
+        <h2>Artifact Description</h2>
+        <p>The artifact I selected for this category is a Thermostat Prototype originally developed in my CS-350: Emerging Systems Architectures and Technologies. This project uses a Raspberry Pi integrated with a temperature sensor, an LCD screen, and LED indicators to simulate a climate control system. The software manages three states—Off, Heat, and Cool—and transmits status updates to a remote server via serial communication.</p>
 
-        <h2>Professional Narrative</h2>
-        <p>My enhancement focused on transitioning a monolithic script—where hardware logic and global variables were tightly coupled—into a modular, class-based "Toolbox" architecture[cite: 9, 13, 14]. This refactoring followed industry best practices by centralizing hardware configurations into a <code>CONFIG</code> dictionary for improved maintainability[cite: 17, 18].</p>
+        <h2>Justification for Inclusion</h2>
+        <p>I selected this artifact because it serves as a bridge between physical hardware and complex software logic. By enhancing this project, I demonstrated growth in:</p>
+        <ul>
+            <li><strong>Architectural Design:</strong> Transitioning from a monolithic script to a modular, class-based structure.</li>
+            <li><strong>Reliability:</strong> Implementing defensive programming to ensure sensor or display failures do not crash the primary control logic.</li>
+            <li><strong>Maintainability:</strong> Centralizing hardware configurations to allow for rapid updates to physical pin mappings without altering the core logic.</li>
+        </ul>
 
-        <p>I engineered a <code>HardwareToolbox</code> class to act as an abstraction layer, ensuring the main controller remains independent of specific sensor mechanics[cite: 23, 24]. A key highlight of this class is the defensive sensor wrapper, which prevents system crashes during hardware failures[cite: 10, 25]:</p>
+        <h2>The Enhancement: Modularization and Refactoring</h2>
+        <p>My primary goal was to refactor the software into a Toolbox architecture. In the original version, the code was a linear list of instructions where global variables and hardware logic were tightly coupled. The enhanced version decouples these responsibilities into dedicated classes.</p>
+        
+        <h3>1. Centralized Configuration</h3>
+        <p>I implemented a ‘CONFIG’ dictionary to manage all hardware pin assignments and thresholds in a single location. This follows industry best practices for maintainability.</p>
+        <p><em>Code Comparison (After):</em></p>
+<pre><code># Centralized Hardware Mapping
+CONFIG = {
+    'PINS': {
+        'RED_LED': 18,
+        'BLUE_LED': 23,
+        'BUTTON_STATE': 24,
+        'BUTTON_INC': 25,
+        'BUTTON_DEC': 12,
+    },
+    'SENSORS': {
+        'HYSTERESIS': 0.5,
+        'LOG_INTERVAL': 30
+    }
+}</code></pre>
 
+        <h3>2. Decoupled Hardware Logic</h3>
+        <p>I created the ‘HardwareToolbox’ class to act as an abstraction layer between the physical sensors and the thermostat's brain. This ensures that the main controller doesn't need to know how the sensor works, only what the temperature is.</p>
+        <p><em>Code Highlight (Defensive Sensor Reading):</em></p>
 <pre><code>def read_temperature_f(self):
     """Defensive wrapper for sensor reading."""
     try:
@@ -53,17 +80,19 @@
         # Failsafe: return last known good value if sensor fails
         return self.last_known_temp</code></pre>
 
-        <p>To meet professional standards for responsiveness, I overcame the challenge of managing concurrent tasks without the resource contention often found in threading[cite: 34, 35]. By implementing a <strong>non-blocking timestamp comparison loop</strong>, I ensured the processor remains highly responsive to physical button interruptions while precisely executing periodic data logging and display refreshes[cite: 36, 37].</p>
+        <h3>3. Professional Communication and Logic</h3>
+        <p>The main ThermostatController now uses a non-blocking timing loop instead of multiple threads for simple display updates, making the execution flow easier to debug and more stable.</p>
 
-        <h2>Self-Reflection</h2>
-        <p>This project demonstrates my ability to employ well-founded computing practices by transitioning to Object-Oriented Programming (OOP)[cite: 41]. Through the separation of concerns, I engineered a resilient system where peripheral failures do not interfere with core thermostat functions[cite: 30, 31, 32]. Ultimately, this refactoring process created an artifact that is not only functional but also accessible to other engineers for future maintenance or scaling, meeting the rigorous standards expected in the software engineering field[cite: 40, 42].</p>
+        <h2>Growth & Technical Process</h2>
+        <p>Throughout the enhancement process, I deepened my understanding of the separation of concerns principle. By isolating the LCD logic from the temperature-sensing logic into discrete class "toolboxes," I engineered a more resilient system. This modularity ensures that a peripheral failure, such as a visual glitch on the LCD, does not interfere with the core thermostat functions—maintaining the critical safety and regulation of the environment.</p>
+
+        <h2>Overcoming Challenges</h2>
+        <p>A significant technical challenge was managing the timing of serial server updates and display refreshes without relying on the Thread library. While threading can handle concurrent tasks, it often introduces complex race conditions and resource contention in embedded environments. I overcame this by implementing a non-blocking timestamp comparison loop. This approach allows the processor to remain highly responsive to physical button interruptions while precisely executing periodic tasks like data logging and screen updates.</p>
+
+        <h2>Meeting Professional Standards</h2>
+        <p>This project demonstrates my ability to deliver professional-quality technical communication. By refactoring a monolithic script into a readable, modular, and well-documented class structure, I created an artifact that is not only functional but also accessible to other engineers for future maintenance or scaling. By transitioning to an Object-Oriented Programming (OOP) this allowed me to employ well-founded computing practices. With centralized configurations and utilizing defensive programming, such as failsafe temperature reading, I have implemented a solution that prioritizes reliability and follows the rigorous standards expected in the software engineering field.</p>
 
         <a href="https://github.com/edward-blair17/edward-blair17.github.io/tree/main/Software%20Design%20and%20Engineering" class="github-link">
-            View Full Source Code on GitHub
-        </a>
-    </div>
-</body>
-</html>
             View Full Source Code on GitHub
         </a>
     </div>
