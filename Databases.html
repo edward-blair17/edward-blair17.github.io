@@ -87,11 +87,14 @@ app.GET("/api/animals", ASYNC (request, response):
         SEND results as JSON</code></pre>
 
         <h2>Growth & Technical Process</h2>
-        <p>This process taught me the importance of environment-specific debugging. While porting the logic was straightforward, I encountered a significant hurdle with "Authentication Failed" errors once I attempted to lock down the database for production. This required a deep dive into the Windows filesystem to locate the MongoDB engine files and manually adjust security settings to enable password authentication. This experience strengthened my ability to troubleshoot complex, multi-layered systems where the solution lies at the intersection of code and system configuration.</p>
+        <p>This process taught me the importance of environment-specific debugging. While porting the logic was straightforward, I gained a deeper understanding of how different runtime environments interact with database drivers. By moving to Node.js, I was able to implement a non-blocking architecture that allows for more concurrent data requests, mirroring how professional applications operate at scale.</p>
+
+        <h2>Overcoming Challenges</h2>
+        <p>A significant technical hurdle arose when I attempted to lock down the database for production. I encountered persistent "Authentication Failed" errors. Overcoming this required a deep dive into the system to locate the MongoDB engine files on the Windows drive and manually adjust security settings to enforce password authentication. This experience strengthened my ability to troubleshoot complex, multi-layered systems where the solution lies at the intersection of code and system configuration.</p>
 
         <h2>Meeting Professional Standards</h2>
-        <p>This enhancement aligns with Course Outcome 4 (Innovative Techniques) by implementing a high-performance, non-blocking architecture. It also fulfills Course Outcome 5 (Security Mindset) through the implementation of a multi-tier authentication strategy. By separating credentials from the application logic and gatekeeping the data behind a REST API, I have delivered a solution that meets the rigorous reliability and security standards expected in professional software engineering.</p>
-
+        <p>This work demonstrates my ability to design and evaluate computing solutions by implementing innovative techniques that deliver industry-standard value. By utilizing a non-blocking I/O loop, I ensured the database interface could handle multiple concurrent requests without thread-locking. Additionally, I showcased a security-first mindset by utilizing a secure, multi-tier authentication strategy. By separating sensitive credentials from the application logic and gatekeeping the data behind a REST API, I have delivered a solution that meets the rigorous reliability and security standards expected in professional software engineering.</p>
+       
         <a href="https://github.com/edward-blair17/edward-blair17.github.io/blob/main/Database.zip" class="github-link">
             View Project Repository on GitHub
         </a>
