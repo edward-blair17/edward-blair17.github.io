@@ -25,7 +25,7 @@
     <div class="content">
         <div class="nav"><a href="index.html">← Back to Portfolio Home</a></div>
         
-        <h1>Artifact 1: Software Design & Engineering</h1>
+        <h1>Artifact 2: Software Design & Engineering</h1>
         
         <div class="highlight-box">
             <strong>Project:</strong> Raspberry Pi Thermostat Prototype<br>
@@ -49,18 +49,24 @@
         <h3>1. Centralized Configuration</h3>
         <p>I implemented a ‘CONFIG’ dictionary to manage all hardware pin assignments and thresholds in a single location. This follows industry best practices for maintainability.</p>
         
-<pre><code># Centralized Hardware Mapping
+<pre><code># Centralized Hardware and System Configuration
 CONFIG = {
-    'PINS': {
-        'RED_LED': 18,
-        'BLUE_LED': 23,
-        'BUTTON_STATE': 24,
-        'BUTTON_INC': 25,
-        'BUTTON_DEC': 12,
-    },
-    'SENSORS': {
-        'HYSTERESIS': 0.5,
-        'LOG_INTERVAL': 30
+    'RED_LED': 18,
+    'BLUE_LED': 23,        
+    'BUTTON_STATE': 24,
+    'BUTTON_INC': 25,
+    'BUTTON_DEC': 12,
+    'LCD_RS': board.D17,
+    'LCD_EN': board.D27,
+    'LCD_D4: board.D5,
+    'LCD_D5: board.D6,
+    'LCD_D6: board.D13,
+    'LCD_D7: board.D26,
+    'SERIAL_PORT': '/dev/ttyS0',
+    'BAUD_RATE': 115200,
+    'HYSTERESIS_OFFSET': 0.5,
+    'DEFAULT_SETPOINT': 72,
+    'DEBUG': True
     }
 }</code></pre>
 
@@ -68,16 +74,23 @@ CONFIG = {
         <p>I created the ‘HardwareToolbox’ class to act as an abstraction layer between the physical sensors and the thermostat's brain. This ensures that the main controller doesn't need to know how the sensor works, only what the temperature is.</p>
 
 <pre><code>def read_temperature_f(self):
-    """Defensive wrapper for sensor reading."""
+    """
+    Reads from sensor and converts to Fahrenheit.
+    Includes defensive checks to handle sensor detachment.
+    """
     try:
         if self.thSensor:
             t_celsius = self.thSensor.temperature
             t_fahrenheit = ((9 / 5) * t_celsius) + 32
-            self.last_known_temp = t_fahrenheit
-            return t_fahrenheit
+            
+            # Cache the value for stability
+            self.last_known_temp = round(t_fahrenheit, 1)
+            return self.last_known_temp
+        
         return self.last_known_temp
+        
     except Exception as e:
-        # Failsafe: return last known good value if sensor fails
+        print(f"Error reading sensor: {e}")
         return self.last_known_temp</code></pre>
 
         <h3>3. Professional Communication and Logic</h3>
@@ -97,4 +110,4 @@ CONFIG = {
         </a>
     </div>
 </body>
-</html>
+</html></code>
