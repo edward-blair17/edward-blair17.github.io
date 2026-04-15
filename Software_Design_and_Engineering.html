@@ -25,44 +25,45 @@
     <div class="content">
         <div class="nav"><a href="index.html">← Back to Portfolio Home</a></div>
         
-        <h1>Artifact 2: Software Design & Engineering</h1>
+        <h1>Artifact 1: Software Design & Engineering</h1>
         
         <div class="highlight-box">
-            <strong>Project:</strong> Raspberry Pi Thermostat System (Refactored)<br>
-            <strong>Computational Focus:</strong> Modular Architecture & Non-blocking Logic
+            <strong>Project:</strong> Raspberry Pi Thermostat Prototype [cite: 3]<br>
+            <strong>Computational Focus:</strong> Modularization, Object-Oriented Refactoring, and Non-blocking Logic [cite: 12, 27]
         </div>
 
         <h2>Project Description</h2>
-        <p>This artifact is an embedded climate control system designed to monitor ambient temperatures and manage heating/cooling states via a State Machine. Originally a single procedural script, I enhanced this system into a modular, object-oriented application capable of real-time responsiveness.</p>
+        <p>This artifact is a climate control system originally developed in CS-350 that integrates a Raspberry Pi with a temperature sensor, LCD screen, and LED indicators[cite: 3, 4]. The software manages Off, Heat, and Cool states while transmitting real-time status updates to a remote server via serial communication[cite: 5]. I selected this project because it serves as a critical bridge between physical hardware and complex software logic[cite: 7].</p>
 
         <h2>Professional Narrative</h2>
-        <p>My enhancement focused on the transition from simple scripting to software engineering. I addressed the "tight coupling" of the original design by encapsulating hardware interactions into specialized classes. Below is a snippet of the <code>HardwareToolbox</code>, which abstracts the sensors and LEDs from the main logic:</p>
+        <p>My enhancement focused on transitioning a monolithic script—where hardware logic and global variables were tightly coupled—into a modular, class-based "Toolbox" architecture[cite: 9, 13, 14]. This refactoring followed industry best practices by centralizing hardware configurations into a <code>CONFIG</code> dictionary for improved maintainability[cite: 17, 18].</p>
 
-<pre><code>class HardwareToolbox:
-    """Manages all physical sensors and indicators."""
-    def __init__(self):
-        self.i2c = board.I2C()
-        try:
-            self.thSensor = adafruit_ahtx0.AHTx0(self.i2c)
-        except Exception as e:
-            self.thSensor = None # Defensive Programming
+        <p>I engineered a <code>HardwareToolbox</code> class to act as an abstraction layer, ensuring the main controller remains independent of specific sensor mechanics[cite: 23, 24]. A key highlight of this class is the defensive sensor wrapper, which prevents system crashes during hardware failures[cite: 10, 25]:</p>
 
-    def read_temperature_f(self):
-        """Defensive wrapper with failure fallbacks."""
-        try:
-            if self.thSensor:
-                t_celsius = self.thSensor.temperature
-                return ((9 / 5) * t_celsius) + 32
-            return self.last_known_temp
-        except Exception:
-            return self.last_known_temp</code></pre>
+<pre><code>def read_temperature_f(self):
+    """Defensive wrapper for sensor reading."""
+    try:
+        if self.thSensor:
+            t_celsius = self.thSensor.temperature
+            t_fahrenheit = ((9 / 5) * t_celsius) + 32
+            self.last_known_temp = t_fahrenheit
+            return t_fahrenheit
+        return self.last_known_temp
+    except Exception as e:
+        # Failsafe: return last known good value if sensor fails
+        return self.last_known_temp</code></pre>
 
-        <p>By implementing <strong>Non-blocking timing</strong>, I allowed the system to perform high-frequency tasks (checking buttons) and low-frequency tasks (updating a remote serial server every 30 seconds) simultaneously. This was achieved using delta-time comparisons rather than thread-freezing <code>sleep()</code> commands.</p>
+        <p>To meet professional standards for responsiveness, I overcame the challenge of managing concurrent tasks without the resource contention often found in threading[cite: 34, 35]. By implementing a <strong>non-blocking timestamp comparison loop</strong>, I ensured the processor remains highly responsive to physical button interruptions while precisely executing periodic data logging and display refreshes[cite: 36, 37].</p>
 
         <h2>Self-Reflection</h2>
-        <p>This project successfully met <strong>Course Outcome 4</strong> by demonstrating professional techniques to deliver real-world value. The introduction of <strong>Hysteresis</strong>—a calibrated offset to prevent LED flickering at the setpoint—showcases an understanding of how software logic must account for physical hardware limitations. This journey taught me that professional code isn't just about functionality; it's about building modular, maintainable, and resilient systems.</p>
+        <p>This project demonstrates my ability to employ well-founded computing practices by transitioning to Object-Oriented Programming (OOP)[cite: 41]. Through the separation of concerns, I engineered a resilient system where peripheral failures do not interfere with core thermostat functions[cite: 30, 31, 32]. Ultimately, this refactoring process created an artifact that is not only functional but also accessible to other engineers for future maintenance or scaling, meeting the rigorous standards expected in the software engineering field[cite: 40, 42].</p>
 
         <a href="https://github.com/edward-blair17/edward-blair17.github.io/tree/main/Software%20Design%20and%20Engineering" class="github-link">
+            View Full Source Code on GitHub
+        </a>
+    </div>
+</body>
+</html>
             View Full Source Code on GitHub
         </a>
     </div>
