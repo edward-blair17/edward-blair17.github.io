@@ -5,30 +5,149 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Algorithms & Data Structures | Edward Blair</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; padding: 2rem; background: #f6f8fa; color: #24292e; }
-        .nav { margin-bottom: 2rem; }
-        .nav a { text-decoration: none; color: #0366d6; font-weight: bold; }
-        .content { max-width: 900px; margin: auto; background: #fff; padding: 2.5rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        h1 { color: #24292e; border-bottom: 2px solid #eaecef; padding-bottom: 10px; }
-        h2 { color: #0366d6; margin-top: 2rem; }
-        .highlight-box { background-color: #f1f8ff; border-left: 4px solid #0366d6; padding: 15px; margin: 20px 0; border-radius: 0 4px 4px 0; }
+        /* General Styles matched to index.html */
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            line-height: 1.6; 
+            margin: 0; 
+            background: #f6f8fa; 
+            color: #24292e; 
+        }
+
+        /* Spruced Up Header - Matched to Home Page */
+        header {
+            background: linear-gradient(135deg, #1a1e22 0%, #0366d6 100%);
+            color: #ffffff;
+            padding: 4rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid #ffd700; /* Gold Accent */
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 { 
+            margin: 0; 
+            font-size: 3rem; 
+            font-weight: 800;
+            letter-spacing: -1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p { 
+            margin: 10px 0 0; 
+            opacity: 0.9; 
+            font-size: 1.2rem; 
+            font-weight: 300;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Navigation Bar */
+        .nav-container {
+            max-width: 900px;
+            margin: 1.5rem auto 0;
+            padding: 0 2rem;
+        }
         
-        pre { background: #272822; color: #f8f8f2; padding: 1.5rem; border-radius: 8px; overflow-x: auto; font-size: 0.9rem; line-height: 1.4; }
+        .nav-container a { 
+            text-decoration: none; 
+            color: #0366d6; 
+            font-weight: bold; 
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        .nav-container a:hover { 
+            color: #005cc5;
+            text-decoration: underline; 
+        }
+
+        /* Content Container */
+        .content { 
+            max-width: 900px; 
+            margin: 1rem auto 3rem; 
+            background: #fff; 
+            padding: 2.5rem; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+        }
+
+        h2 { 
+            color: #0366d6; 
+            border-bottom: 2px solid #eaecef; 
+            padding-bottom: 10px; 
+            margin-top: 2rem;
+        }
+
+        h3 {
+            color: #24292e;
+            margin-top: 1.5rem;
+        }
+
+        p { text-align: justify; margin-bottom: 1.2rem; }
+
+        .highlight-box { 
+            background-color: #f1f8ff; 
+            border-left: 4px solid #0366d6; 
+            padding: 15px; 
+            margin: 20px 0; 
+            border-radius: 0 4px 4px 0; 
+            font-size: 1.1rem;
+        }
+
+        /* List Styling */
+        ul { margin-bottom: 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+        
+        /* Code Block Styling - Professional Dark Theme */
+        pre { 
+            background: #1e1e1e; 
+            color: #dcdcdc; 
+            padding: 1.5rem; 
+            border-radius: 8px; 
+            overflow-x: auto; 
+            font-size: 0.9rem; 
+            line-height: 1.5;
+            border: 1px solid #333;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+            margin: 20px 0;
+        }
         code { font-family: 'Consolas', 'Monaco', 'Courier New', monospace; }
         
-        .github-link { background: #24292e; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block; margin-top: 20px; font-weight: bold; }
-        .github-link:hover { background: #444; }
+        /* GitHub Link Button */
+        .github-link { 
+            background: #24292e; 
+            color: white; 
+            padding: 14px 28px; 
+            text-decoration: none; 
+            border-radius: 6px; 
+            display: inline-block; 
+            margin-top: 20px; 
+            font-weight: bold; 
+            transition: all 0.3s ease;
+        }
+        .github-link:hover { 
+            background: #444; 
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
     </style>
 </head>
 <body>
+
+    <header>
+        <h1>Algorithms & Data Structures</h1>
+        <p>Artifact 2: Sensor Smoothing & Preference Tracking</p>
+    </header>
+
+    <div class="nav-container">
+        <a href="index.html">← Back to Portfolio Home</a>
+    </div>
+
     <div class="content">
-        <div class="nav"><a href="index.html">← Back to Portfolio Home</a></div>
-        
-        <h1>Artifact 2: Algorithms & Data Structures</h1>
         
         <div class="highlight-box">
             <strong>Project:</strong> Data-Aware Thermostat System<br>
-            <strong>Computational Focus:</strong> Sensor Smoothing & Preference Tracking
+            <strong>Computational Focus:</strong> Moving Average Algorithms & Queue-Based Buffers
         </div>
 
         <h2>Artifact Description</h2>
@@ -39,7 +158,7 @@
         <ul>
             <li><strong>Sensor Smoothing:</strong> Implementing a moving average to stabilize environmental data.</li>
             <li><strong>Predictive Logging:</strong> Tracking user behavior through historical setpoint analysis.</li>
-            <li><strong>Efficiency and Trade-offs:</strong> Using appropriate data structures to manage memory while improving system reliability.</li>
+            <li><strong>Efficiency and Trade-offs:</strong> Using appropriate data structures (Deques) to manage memory while improving system reliability.</li>
         </ul>
 
         <h2>The Enhancement: Data Smoothing and User Preference Tracking</h2>
@@ -48,23 +167,21 @@
         <h3>1. Implementing a Rolling Buffer (Moving Average)</h3>
         <p>To solve the problem of sensor noise, I implemented a Moving Average Algorithm. Instead of reacting to one raw temperature reading, the system now stores the last ten readings in a deque.</p>
 
-        <p><strong>Code Highlight: Algorithmic Smoothing</strong></p>
 <pre><code>def get_stabilized_temp(self):
     # 1. Get current reading
     raw_temp = self.getFahrenheit()
     
-    # 2. Append to deque (automatically removes oldest if > 10)
+    # 2. Append to deque (automatically removes oldest if size > 10)
     self.temp_history.append(raw_temp)
     
     # 3. Calculate and return average
     avg_temp = sum(self.temp_history) / len(self.temp_history)
-    return avg_temp</code></pre>
+    return round(avg_temp, 1)</code></pre>
         <p>This demonstrates the use of a queue-based data structure to maintain a fixed-size memory of 10 items, ensuring the thermostat reacts to actual environmental trends rather than momentary noise.</p>
 
         <h3>2. Preference Tracking Algorithm</h3>
         <p>I added a secondary algorithm to monitor and log the user's historical comfort range. By tracking the ‘user_goal_high’ and ‘user_goal_low’, the system begins to learn the specific comfort boundaries of the resident.</p>
 
-        <p><strong>Code Comparison: Preference Tracking</strong></p>
 <pre><code># Track the high and low goals requested by the user
 if self.setPoint > self.user_goal_high:
     self.user_goal_high = self.setPoint
@@ -77,12 +194,12 @@ if self.setPoint < self.user_goal_low:
         <p>This enhancement allowed me to move beyond basic programming into algorithmic optimization. I learned that a computing solution is only as good as the data it processes. By using a sliding window for temperature readings, I created a much more stable user experience. This process required a deep understanding of how to iterate through data structures and perform arithmetic operations to return a stabilized result that the hardware can safely act upon.</p>
 
         <h2>Overcoming Challenges</h2>
-        <p>One challenge was determining the appropriate size for the data buffer. A buffer that is too small does not sufficiently filter noise, while a buffer that is too large makes the thermostat too slow to react to actual temperature changes. That is why I decided on a 10-reading buffer, which provided a balance between responsiveness and stability.</p>
+        <p>One challenge was determining the appropriate size for the data buffer. A buffer that is too small does not sufficiently filter noise, while a buffer that is too large makes the thermostat too slow to react to actual temperature changes. I decided on a 10-reading buffer, which provided an optimal balance between responsiveness and stability for a residential environment.</p>
 
         <h2>Meeting Professional Standards</h2>
         <p>This work shows my ability to design and evaluate computing solutions using algorithmic principles. By implementing a smoothing algorithm, I solved the technical problem of sensor noise while effectively managing design trade-offs. By specifically using a small amount of memory to gain a significantly more reliable and technically sound solution, I demonstrated that I can utilize data organization to deliver professional software that accomplishes industry-specific goals.</p>
 
-        <a href="https://github.com/edward-blair17/edward-blair17.github.io/tree/main/Algorithms%20and%20Data%20Structures" class="github-link">
+        <a href="https://github.com/edward-blair17/edward-blair17.github.io/tree/main/Algorithms%20and%20Data%20Structures" class="github-link" target="_blank">
             View Algorithm Source Code on GitHub
         </a>
     </div>
