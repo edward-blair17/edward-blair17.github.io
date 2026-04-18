@@ -5,31 +5,145 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Databases | Edward Blair</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; padding: 2rem; background: #f6f8fa; color: #24292e; }
-        .nav { margin-bottom: 2rem; }
-        .nav a { text-decoration: none; color: #0366d6; font-weight: bold; }
-        .content { max-width: 900px; margin: auto; background: #fff; padding: 2.5rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        h1 { color: #24292e; border-bottom: 2px solid #eaecef; padding-bottom: 10px; }
-        h2 { color: #0366d6; margin-top: 2rem; }
-        .highlight-box { background-color: #f1f8ff; border-left: 4px solid #0366d6; padding: 15px; margin: 20px 0; border-radius: 0 4px 4px 0; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            line-height: 1.6; 
+            margin: 0; 
+            background: #f6f8fa; 
+            color: #24292e; 
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a1e22 0%, #0366d6 100%);
+            color: #ffffff;
+            padding: 4rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid #ffd700; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 { 
+            margin: 0; 
+            font-size: 3rem; 
+            font-weight: 800;
+            letter-spacing: -1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p { 
+            margin: 10px 0 0; 
+            opacity: 0.9; 
+            font-size: 1.2rem; 
+            font-weight: 300;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Navigation Bar */
+        .nav-container {
+            max-width: 900px;
+            margin: 1.5rem auto 0;
+            padding: 0 2rem;
+        }
         
-        /* Code Block Styling */
-        pre { background: #272822; color: #f8f8f2; padding: 1.5rem; border-radius: 8px; overflow-x: auto; font-size: 0.9rem; line-height: 1.4; }
+        .nav-container a { 
+            text-decoration: none; 
+            color: #0366d6; 
+            font-weight: bold; 
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        .nav-container a:hover { 
+            color: #005cc5;
+            text-decoration: underline; 
+        }
+
+        .content { 
+            max-width: 900px; 
+            margin: 1rem auto 3rem; 
+            background: #fff; 
+            padding: 2.5rem; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+        }
+
+        h2 { 
+            color: #0366d6; 
+            border-bottom: 2px solid #eaecef; 
+            padding-bottom: 10px; 
+            margin-top: 2rem;
+        }
+
+        h3 {
+            color: #24292e;
+            margin-top: 1.5rem;
+        }
+
+        p { text-align: justify; margin-bottom: 1.2rem; }
+
+        .highlight-box { 
+            background-color: #f1f8ff; 
+            border-left: 4px solid #0366d6; 
+            padding: 15px; 
+            margin: 20px 0; 
+            border-radius: 0 4px 4px 0; 
+            font-size: 1.1rem;
+        }
+
+        /* List Styling */
+        ul { margin-bottom: 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+        
+        pre { 
+            background: #1e1e1e; 
+            color: #dcdcdc; 
+            padding: 1.5rem; 
+            border-radius: 8px; 
+            overflow-x: auto; 
+            font-size: 0.9rem; 
+            line-height: 1.5;
+            border: 1px solid #333;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+            margin: 20px 0;
+        }
         code { font-family: 'Consolas', 'Monaco', 'Courier New', monospace; }
         
-        .github-link { background: #24292e; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block; margin-top: 20px; font-weight: bold; }
-        .github-link:hover { background: #444; }
+        /* GitHub Link Button */
+        .github-link { 
+            background: #24292e; 
+            color: white; 
+            padding: 14px 28px; 
+            text-decoration: none; 
+            border-radius: 6px; 
+            display: inline-block; 
+            margin-top: 20px; 
+            font-weight: bold; 
+            transition: all 0.3s ease;
+        }
+        .github-link:hover { 
+            background: #444; 
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
     </style>
 </head>
 <body>
+
+    <header>
+        <h1>Database Architecture</h1>
+        <p>Artifact 3: Full-Stack Migration & RESTful API Integration</p>
+    </header>
+
+    <div class="nav-container">
+        <a href="index.html">← Back to Portfolio Home</a>
+    </div>
+
     <div class="content">
-        <div class="nav"><a href="index.html">← Back to Portfolio Home</a></div>
-        
-        <h1>Artifact 3: Databases</h1>
         
         <div class="highlight-box">
             <strong>Project:</strong> Animal Shelter Dashboard (Grazioso Salvare)<br>
-            <strong>Computational Focus:</strong> Full-Stack Migration and RESTful API Integration
+            <strong>Computational Focus:</strong> Secure CRUD Operations & Non-Blocking I/O
         </div>
 
         <h2>Artifact Description</h2>
@@ -53,7 +167,7 @@
 {
   "database": {
     "username": "aacuser",
-    "password": "SNHU1234",
+    "password": "PROTECTED_CREDENTIALS",
     "host": "localhost",
     "port": 27017,
     "dbName": "aac",
@@ -62,29 +176,29 @@
 }</code></pre>
 
         <h3>2. Backend API Logic (Node.js/Express)</h3>
-        <p>The following pseudocode illustrates the structure of the new Express server, which handles database connections and serves animal data through secure API endpoints.</p>
+        <p>The implementation uses an asynchronous design to ensure the server remains responsive while waiting for database I/O operations to complete.</p>
 
-<pre><code># Node.js Express Server Logic
-IMPORT Express, MongoDB Driver
- 
-FUNCTION loadConfig():
-    READ "secure_config.json"
-    RETURN parsed JSON object
- 
-ASYNC FUNCTION connectToDatabase():
-    config = loadConfig()
-    TRY:
-        URI = "mongodb://user:pass@host:port"
-        client = WAIT FOR MongoClient.connect(URI)
-        RETURN client.db("aac").collection("animals")
-    CATCH Error:
-        PRINT "Database Status: OFFLINE"
- 
-app.GET("/api/animals", ASYNC (request, response):
-    collection = WAIT FOR connectToDatabase()
-    IF collection:
-        results = WAIT FOR collection.find(query).toArray()
-        SEND results as JSON</code></pre>
+<pre><code>// Node.js Express Server Logic (Simplified)
+const express = require('express');
+const { MongoClient } = require('mongodb');
+const app = express();
+
+async function connectToDatabase() {
+    const config = require('./secure_config.json');
+    const uri = `mongodb://${config.user}:${config.pass}@${config.host}`;
+    const client = await MongoClient.connect(uri);
+    return client.db(config.dbName).collection(config.collectionName);
+}
+
+app.get("/api/animals", async (req, res) => {
+    try {
+        const collection = await connectToDatabase();
+        const results = await collection.find({}).toArray();
+        res.json(results);
+    } catch (err) {
+        res.status(500).send("Database Error");
+    }
+});</code></pre>
 
         <h2>Growth & Technical Process</h2>
         <p>This process taught me the importance of environment-specific debugging. While porting the logic was straightforward, I gained a deeper understanding of how different runtime environments interact with database drivers. By moving to Node.js, I was able to implement a non-blocking architecture that allows for more concurrent data requests, mirroring how professional applications operate at scale.</p>
@@ -95,7 +209,7 @@ app.GET("/api/animals", ASYNC (request, response):
         <h2>Meeting Professional Standards</h2>
         <p>This work demonstrates my ability to design and evaluate computing solutions by implementing innovative techniques that deliver industry-standard value. By utilizing a non-blocking I/O loop, I ensured the database interface could handle multiple concurrent requests without thread-locking. Additionally, I showcased a security-first mindset by utilizing a secure, multi-tier authentication strategy. By separating sensitive credentials from the application logic and gatekeeping the data behind a REST API, I have delivered a solution that meets the rigorous reliability and security standards expected in professional software engineering.</p>
        
-        <a href="https://github.com/edward-blair17/edward-blair17.github.io/blob/main/Database.zip" class="github-link">
+        <a href="https://github.com/edward-blair17/edward-blair17.github.io/blob/main/Database.zip" class="github-link" target="_blank">
             View Project Repository on GitHub
         </a>
     </div>
