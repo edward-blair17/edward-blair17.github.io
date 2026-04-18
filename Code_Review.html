@@ -5,21 +5,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Review Artifact | Edward Blair</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; padding: 2rem; background: #f6f8fa; color: #24292e; }
-        .nav { margin-bottom: 2rem; }
-        .nav a { text-decoration: none; color: #0366d6; font-weight: bold; }
-        .content { max-width: 800px; margin: auto; background: #fff; padding: 2.5rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        h1 { color: #24292e; border-bottom: 2px solid #eaecef; padding-bottom: 10px; }
-        h2 { color: #0366d6; margin-top: 2rem; }
+        /* General Styles matched to index.html */
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            line-height: 1.6; 
+            margin: 0; 
+            background: #f6f8fa; 
+            color: #24292e; 
+        }
+
+        /* Spruced Up Header - Matched to Home Page */
+        header {
+            background: linear-gradient(135deg, #1a1e22 0%, #0366d6 100%);
+            color: #ffffff;
+            padding: 4rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid #ffd700; /* Gold Accent */
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        header h1 { 
+            margin: 0; 
+            font-size: 3rem; 
+            font-weight: 800;
+            letter-spacing: -1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p { 
+            margin: 10px 0 0; 
+            opacity: 0.9; 
+            font-size: 1.2rem; 
+            font-weight: 300;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Navigation Bar */
+        .nav-container {
+            max-width: 800px;
+            margin: 1.5rem auto 0;
+            padding: 0 2rem;
+        }
         
+        .nav-container a { 
+            text-decoration: none; 
+            color: #0366d6; 
+            font-weight: bold; 
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        .nav-container a:hover { 
+            color: #005cc5;
+            text-decoration: underline; 
+        }
+
+        /* Content Container */
+        .content { 
+            max-width: 800px; 
+            margin: 1rem auto 3rem; 
+            background: #fff; 
+            padding: 2.5rem; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+        }
+
+        h2 { 
+            color: #0366d6; 
+            border-bottom: 2px solid #eaecef; 
+            padding-bottom: 10px; 
+            margin-top: 2rem;
+        }
+        
+        p {
+            text-align: justify;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Video Styling */
         .video-container {
             position: relative;
             padding-bottom: 56.25%; 
             height: 0;
             overflow: hidden;
-            margin: 20px 0;
+            margin: 25px 0;
             border-radius: 8px;
-            border: 1px solid #ddd;
+            border: 1px solid #dfe1e5;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
         .video-container iframe {
             position: absolute;
@@ -29,24 +101,37 @@
             height: 100%;
         }
 
+        /* GitHub Button */
         .github-link { 
             background: #24292e; 
             color: white; 
-            padding: 12px 24px; 
+            padding: 14px 28px; 
             text-decoration: none; 
             border-radius: 6px; 
             display: inline-block; 
-            margin-top: 20px;
+            margin-top: 10px;
             font-weight: bold;
+            transition: all 0.3s ease;
         }
-        .github-link:hover { background: #444; }
+        .github-link:hover { 
+            background: #444; 
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
     </style>
 </head>
 <body>
-    <div class="content">
-        <div class="nav"><a href="index.html">← Back to Portfolio Home</a></div>
-        
+
+    <header>
         <h1>Code Review</h1>
+        <p>Artifact Analysis & Planned Enhancements</p>
+    </header>
+
+    <div class="nav-container">
+        <a href="index.html">← Back to Portfolio Home</a>
+    </div>
+
+    <div class="content">
         
         <h2>Video Walkthrough</h2>
         <p>In this video, I perform a detailed code review of my initial project, identifying areas for improvement in software design, algorithm efficiency, and security.</p>
@@ -71,9 +156,10 @@
 
         <p>Finally, in the Database section, I reviewed the data persistence layer. I identified needed improvements in how the application interacts with the data store, focusing on security and the efficiency of CRUD operations. This reflection and the accompanying video serve as the roadmap for my upcoming sprint, where I will execute these planned enhancements to create a polished, professional-grade artifact.</p>
 
-        <a href="https://github.com/edward-blair17/edward-blair17.github.io/tree/main/Software%20Design%20and%20Engineering" class="github-link">
+        <a href="https://github.com/edward-blair17/edward-blair17.github.io/tree/main/Software%20Design%20and%20Engineering" class="github-link" target="_blank">
             View Project Files on GitHub
         </a>
     </div>
+
 </body>
 </html>
